@@ -1,7 +1,7 @@
 
 body {
     margin: 0px; 
-    background-color: rgb(240, 240, 240); 
+    background-color: rgb(250, 250, 250); 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 16px; 
 }
@@ -14,72 +14,19 @@ body {
 
 $main-color: rgb(144, 19, 247); 
 $secondary-color: rgb(5, 255, 255); 
-$text-color: rgb(20, 20, 20); 
+$text-color: rgb(35, 35, 35); 
 
 
 .lan-page-container {
     width: 100%; 
     height: auto; 
-    display: flex; 
-    justify-content: center;
-    align-items: center; 
-    flex-direction: column;
-
-    .left-side-container { 
-        width: 100%; 
-        height: auto; 
-        background-color: rgb(240, 240, 240); 
-        display: flex; 
-        justify-content: center;
-        align-items: center; 
-        flex-direction: column; 
-
-        .img-container {
-            width: 90%; 
-            height: auto; 
-            @extend .center; 
-            margin: 20px 0px; 
-
-            img {
-                width: 50%; 
-                height: auto; 
-            }
-        }
-
-        .left-side-box {
-            width: 90%; 
-            height: 65%; 
-            border-radius: 20px; 
-            //background-color: white; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-evenly;
-            align-items: center; 
-
-            .compare-button {
-                width: 100%; 
-                height: 50px;
-                background-color: white; 
-                border-radius: 30px; 
-                @extend .center; 
-                cursor: pointer;
-            }
-
-            .other-button {
-                width: 100%; 
-                height: 50px; 
-                background-color: rgb(240, 240, 240); 
-                border-radius: 30px;
-                @extend .center; 
-                cursor: pointer; 
-            }
-        }
-    }
+    @extend .center; 
+    flex-direction: column; 
 
     .right-side-container {
-        width: 95%; 
+        width: 80%; 
         height: auto; 
-        background-color: rgb(240, 240, 240); 
+        background-color: rgb(250, 250, 250); 
         display: flex; 
         flex-direction: column;
         margin-bottom: 50px; 
@@ -91,11 +38,16 @@ $text-color: rgb(20, 20, 20);
             width: 90%; 
             margin: 15px 0px; 
             text-align: left;
+            font-size: 3em; 
+            color: $text-color; 
         }
 
         .top-p-thing {
             width: 80%; 
             margin: 25px 0px; 
+            font-size: 1.25em; 
+            font-weight: 600; 
+            color: $text-color; 
         }
 
         .graph-div {
@@ -105,7 +57,10 @@ $text-color: rgb(20, 20, 20);
             flex-direction: column; 
 
             p {
-                width: 80%;   
+                width: 80%; 
+                font-size: 1.25em; 
+                font-weight: 600; 
+                color: $text-color; 
             }
 
             .line-stuff {
@@ -118,441 +73,23 @@ $text-color: rgb(20, 20, 20);
             }
         }
     }
-}
+} 
 
-@media only screen and (min-width: 500px) and (max-width: 900px) {
-    .lan-page-container .left-side-container .img-container img {
-        width: 15%; 
-    }
-}
-
-@media only screen and (min-width: 901px) and (max-width: 1200px) {
-    .lan-page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .lan-page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .lan-page-container {
-        display: unset; 
-    }
-}
-
-@media only screen and (min-width: 1201px) and (max-width: 1600px) {
-    .lan-page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .lan-page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .lan-page-container {
-        display: unset; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .top-p-thing {
-        font-size: 1.25em; 
-    }
-
-    .lan-page-container .right-side-container .graph-div p {
-        font-size: 1.25em; 
-    }
-}
-
-@media only screen and (min-width: 1601px) and (max-width: 2100px) {
-    .lan-page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .lan-page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .lan-page-container {
-        display: unset; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .top-p-thing {
-        font-size: 1.65em; 
-    }
-
-    .lan-page-container .right-side-container .graph-div p {
-        font-size: 1.65em; 
-        width: 35%; 
-    }
-
-    .lan-page-container .right-side-container .graph-div .line-stuff {
-        width: 50%; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .compare-button {
-        font-size: 1.65em; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .other-button {
-        font-size: 1.65em; 
-    }
-
-    .lan-page-container .right-side-container .graph-div {
-        flex-direction: row; 
-    }
-}
-
-@media only screen and (min-width: 2101px) and (max-width: 2600px) {
-    .lan-page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
+@media only screen and (min-width: 250px) and (max-width: 1024px) { 
     .lan-page-container .right-side-container h1 {
-        font-size: 3.5em; 
-    }
-
-    .lan-page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .lan-page-container {
-        display: unset; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
+        margin: 35px 0px; 
+    } 
 
     .lan-page-container .right-side-container .top-p-thing {
-        font-size: 2em; 
-    }
-
-    .lan-page-container .right-side-container .graph-div p {
-        font-size: 2em; 
-        width: 45%; 
-    }
+        width: 90%; 
+    } 
 
     .lan-page-container .right-side-container .graph-div .line-stuff {
-        width: 50%; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .compare-button {
-        font-size: 2em; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .other-button {
-        font-size: 2em; 
-    }
-
-    .lan-page-container .right-side-container .graph-div {
-        flex-direction: row; 
-    }
-}
-
-@media only screen and (min-width: 2601px) and (max-width: 3200px) {
-    .lan-page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .lan-page-container .right-side-container h1 {
-        font-size: 3.75em; 
-    }
-
-    .lan-page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .lan-page-container {
-        display: unset; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .top-p-thing {
-        font-size: 2.5em; 
-    }
+        width: 100%; 
+        padding: 10px; 
+    } 
 
     .lan-page-container .right-side-container .graph-div p {
-        font-size: 2.5em; 
-        width: 45%; 
-    }
-
-    .lan-page-container .right-side-container .graph-div .line-stuff {
-        width: 50%; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .compare-button {
-        font-size: 2.5em; 
-        height: 90px; 
-        border-radius: 65px; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .other-button {
-        font-size: 2.5em; 
-        height: 90px;
-        border-radius: 65px; 
-    }
-
-    .lan-page-container .right-side-container .graph-div {
-        flex-direction: row; 
-    }
-}
-
-@media only screen and (min-width: 3201px) and (max-width: 4000px) {
-    .lan-page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .lan-page-container .right-side-container h1 {
-        font-size: 4.25em; 
-    }
-
-    .lan-page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .lan-page-container {
-        display: unset; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .top-p-thing {
-        font-size: 3.25em; 
-    }
-
-    .lan-page-container .right-side-container .graph-div p {
-        font-size: 3.25em; 
-        width: 45%; 
-    }
-
-    .lan-page-container .right-side-container .graph-div .line-stuff {
-        width: 50%; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .compare-button {
-        font-size: 3em; 
-        height: 100px; 
-        border-radius: 65px; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .other-button {
-        font-size: 3em; 
-        height: 100px;
-        border-radius: 65px; 
-    }
-
-    .lan-page-container .right-side-container .graph-div {
-        flex-direction: row; 
-    }
-}
-
-@media only screen and (min-width: 4001px) {
-    .lan-page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .lan-page-container .right-side-container h1 {
-        font-size: 4.5em; 
-    }
-
-    .lan-page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .lan-page-container {
-        display: unset; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .lan-page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .lan-page-container .right-side-container .top-p-thing {
-        font-size: 3.5em; 
-    }
-
-    .lan-page-container .right-side-container .graph-div p {
-        font-size: 3.5em; 
-        width: 45%; 
-    }
-
-    .lan-page-container .right-side-container .graph-div .line-stuff {
-        width: 50%; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .compare-button {
-        font-size: 3.5em; 
-        height: 125px; 
-        border-radius: 100px; 
-    }
-
-    .lan-page-container .left-side-container .left-side-box .other-button {
-        font-size: 3em; 
-        height: 100px;
-        border-radius: 65px; 
-    }
-
-    .lan-page-container .right-side-container .graph-div {
-        flex-direction: row; 
+        width: 90%; 
     }
 }

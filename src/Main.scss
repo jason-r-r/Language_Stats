@@ -1,7 +1,7 @@
 
 body {
     margin: 0px; 
-    background-color: rgb(240, 240, 240); 
+    background-color: rgb(250, 250, 250); 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 16px; 
 }
@@ -16,23 +16,24 @@ optgroup { font-size: 15px; }
 
 $main-color: rgb(144, 19, 247); 
 $secondary-color: rgb(5, 255, 255); 
-$text-color: rgb(20, 20, 20); 
+$text-color: rgb(35, 35, 35); 
 
 .page-container {
     width: 100%; 
     height: auto; 
+    position: relative; 
     display: flex; 
     justify-content: center;
     align-items: center; 
-    flex-direction: column;
 
     .left-side-container { 
-        width: 100%; 
-        height: auto; 
-        background-color: rgb(240, 240, 240); 
-        display: flex; 
-        justify-content: center;
-        align-items: center; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 10%; 
+        height: 100%; 
+        background-color: rgb(250, 250, 250); 
+        @extend .center; 
         flex-direction: column; 
 
         .img-container {
@@ -48,10 +49,10 @@ $text-color: rgb(20, 20, 20);
         }
 
         .left-side-box {
-            width: 90%; 
+            width: 75px; 
             height: 65%; 
-            border-radius: 20px; 
-            //background-color: white; 
+            border-radius: 50px; 
+            background-color: $main-color; 
             display: flex; 
             flex-direction: column; 
             justify-content: space-evenly;
@@ -67,23 +68,46 @@ $text-color: rgb(20, 20, 20);
             }
 
             .other-button {
-                width: 100%; 
-                height: 50px; 
-                background-color: rgb(240, 240, 240); 
-                border-radius: 30px;
+                width: 60px; 
+                height: 60px; 
+                background-color: $main-color; 
+                border-radius: 100%;
                 @extend .center; 
                 cursor: pointer; 
+                transition: all ease 500ms; 
+
+                &:hover {
+                    background-color: rgb(113, 21, 188); 
+                }
+
+                #globe {
+                    width: 50px; 
+                } 
+
+                #python {
+                    width: 75px; 
+                } 
+
+                #csharp-java {
+                    width: 40px; 
+                } 
+
+                #javascript {
+                    width: 45px; 
+                }
             }
         }
     }
 
-    .right-side-container {
-        width: 95%; 
+    .right-side-container { 
+        width: 90%; 
         height: auto; 
-        background-color: rgb(240, 240, 240); 
+        background-color: rgb(250, 250, 250); 
         display: flex; 
-        flex-direction: column;
-        margin: 50px 0px; 
+        flex-direction: column; 
+        padding: 50px 0px; 
+        // margin: 50px 0px; 
+        margin-left: 10%; 
 
         .input-container {
             width: 100%; 
@@ -99,6 +123,7 @@ $text-color: rgb(20, 20, 20);
                 height: 20px; 
                 border-radius: 100%; 
                 background-color:rgb(144, 19, 247); 
+                margin: 0px 20px; 
             }
 
             .right-select {
@@ -106,21 +131,26 @@ $text-color: rgb(20, 20, 20);
                 height: 20px; 
                 border-radius: 100%; 
                 background-color: rgb(5, 255, 255); 
+                margin: 0px 20px; 
             }
 
             select {
-                width: 120px; 
-                height: 40px; 
-                border-radius: 5px; 
+                width: 175px; 
+                height: 45px; 
                 border: 2px rgba(0, 0, 0, 0) solid;
                 color: $text-color; 
                 outline: none; 
-                border-radius: 5px; 
-                transition: border 1000ms;
-                font-weight: 500; 
+                border-radius: 25px; 
+                padding-left: 10px; 
+                transition: all ease 1000ms;
+                font-weight: 600; 
+                font-size: 16px; 
+                box-shadow: 5px 0 5px rgba(0, 0, 0, 0.2); 
+                cursor: pointer; 
 
                 &:focus {
                     border: 2px solid rgb(144, 19, 247); 
+                    box-shadow: none; 
                 }
             }
 
@@ -129,9 +159,10 @@ $text-color: rgb(20, 20, 20);
                 height: 40px; 
                 border-radius: 20px; 
                 border: 2px $main-color solid; 
-                background-color:rgba(144, 19, 247, 0.1);
+                background-color:rgba(144, 19, 247, 0.1); 
                 color: $main-color; 
                 font-weight: 600; 
+                font-size: 16px; 
                 cursor: pointer; 
                 outline: none;
                 transition: background-color 800ms; 
@@ -142,29 +173,66 @@ $text-color: rgb(20, 20, 20);
                 }
             }
         }
+
+        #red-error {
+            text-align: center; 
+        } 
+
+        .pay-popularity-click-container { 
+            width: 100%; 
+            height: auto; 
+            @extend .center; 
+
+            .content { 
+                @extend .center; 
+                // border: 2px solid $main-color; 
+                // border-radius: 15px; 
+
+                div {
+                    width: 125px; 
+                    padding: 5px 0px; 
+                    text-align: center; 
+                    color: $main-color; 
+                    font-weight: 600; 
+                    font-size: 16px; 
+                    cursor: pointer; 
+                    transition: all ease 500ms; 
+
+                    &:hover {
+                        background-color: $main-color !important; 
+                        color: white !important; 
+                    }
+                } 
+
+                #left-border { 
+                    border: 2px solid $main-color; 
+                    border-left: 1px solid $main-color; 
+                    border-top-right-radius: 15px; 
+                    border-bottom-right-radius: 15px; 
+                } 
+
+                #right-border { 
+                    border: 2px solid $main-color; 
+                    border-right: 1px solid $main-color; 
+                    border-top-left-radius: 15px; 
+                    border-bottom-left-radius: 15px; 
+                }
+            }
+        }
+
         .graph-container {
             width: 100%; 
             margin-top: 10px 0px; 
             @extend .center; 
             flex-direction: column; 
 
-            .line-graph-donut-container {
+            .pay-graph-container {
                 width: 100%; 
                 height: auto; 
-                @extend .center; 
-                flex-direction: column; 
+                @extend .center;  
                 justify-content: space-evenly; 
+                flex-direction: column; 
                 margin: 5px 0px; 
-
-                .line-div {
-                    width: 85%; 
-                    height: auto; 
-                    padding: 30px; 
-                    background-color: white; 
-                    border-radius: 30px; 
-                    margin: 15px 0px; 
-                    @extend .center; 
-                }
 
                 .donut-div {
                     width: 75%; 
@@ -174,510 +242,174 @@ $text-color: rgb(20, 20, 20);
                     border-radius: 30px; 
                     margin: 30px 0px; 
                     @extend .center; 
-                }
-            }
+                    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1); 
+                } 
 
-            .bar-graph-pie-container {
-                width: 100%; 
-                height: auto; 
-                @extend .center; 
-                flex-direction: column; 
-                justify-content: space-evenly; 
-                margin: 5px 0px; 
-
-                .bar-div {
-                    width: 85%; 
+                .line-div {
+                    width: 75%; 
                     height: auto; 
                     padding: 30px; 
                     background-color: white; 
                     border-radius: 30px; 
                     margin: 15px 0px; 
                     @extend .center; 
-                }
+                    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1); 
+                } 
+            }
+
+            .popularity-graph-container {
+                width: 100%; 
+                height: auto; 
+                @extend .center; 
+                justify-content: space-evenly; 
+                flex-direction: column; 
+                margin: 5px 0px; 
+
+                .bar-div {
+                    width: 75%; 
+                    height: auto; 
+                    padding: 30px; 
+                    background-color: white; 
+                    border-radius: 30px; 
+                    margin: 15px 0px; 
+                    @extend .center; 
+                    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1); 
+                } 
 
                 .pie-div {
                     width: 75%; 
                     height: auto; 
                     padding: 30px 0px; 
                     background-color: white; 
-                    border-radius: 30px 0px; 
+                    border-radius: 30px; 
                     margin: 30px 0px; 
                     @extend .center; 
+                    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1); 
                 }
             }
         }
     }
 }
 
+
+.invert-filter { 
+    filter: brightness(0) invert(1);
+}
+
+
+
 .input-stuff-container {
     width: 100%; 
     @extend .center; 
     flex-direction: row;
     justify-content: space-evenly; 
-}
+} 
 
-@media only screen and (min-width: 500px) and (max-width: 900px) {
-    .page-container .left-side-container .img-container img {
-        width: 15%; 
-    }
-}
 
-@media only screen and (min-width: 901px) and (max-width: 1200px) {
-    .page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
+@media only screen and (min-width: 250px) and (max-width: 1024px) {
     .page-container {
-        display: unset; 
-    }
-}
+        flex-direction: column; 
 
-@media only screen and (min-width: 1201px) and (max-width: 1600px) {
-    .page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
+        .left-side-container {
+            position: relative; 
+            width: 100%; 
+            height: auto; 
 
-    .page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
+            .left-side-box {
+                width: 100%; 
+                height: 65px; 
+                border-radius: 0px; 
+                padding: 10px 0px; 
+                flex-direction: row; 
+            }
+        }
 
-    .page-container {
-        display: unset; 
-    }
+        .right-side-container {
+            margin: 0px; 
+            padding: 0px;
 
-    .page-container .right-side-container .graph-container .line-graph-donut-container {
+            .input-container select {
+                width: 150px; 
+                order: 2; 
+            } 
+
+            .input-container .right-select {
+                order: 1; 
+            } 
+
+            .color-select-container {
+                margin: 15px 0px; 
+            } 
+
+            .graph-container .pay-graph-container {
+                .donut-div {
+                    width: 100%; 
+                    padding: 10px; 
+                } 
+
+                .line-div {
+                    width: 100%; 
+                    padding: 10px; 
+                }
+            } 
+
+            .graph-container .popularity-graph-container {
+                .bar-div {
+                    width: 100%; 
+                    padding: 10px; 
+                } 
+
+                .pie-div {
+                    width: 100%; 
+                    padding: 10px; 
+                }
+            }
+            
+            
+            
+        } 
+
+        .input-stuff-container {
+            flex-direction: column;
+        }
+    } 
+} 
+
+@media only screen and (min-width: 700px) {
+    .page-container .input-stuff-container {
         flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-}
-
-@media only screen and (min-width: 1601px) and (max-width: 2200px) {
-    .page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .page-container {
-        display: unset; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .page-container .left-side-container .left-side-box .compare-button {
-        font-size: 1.5em; 
-    }
-
-    .page-container .left-side-container .left-side-box .other-button {
-        font-size: 1.5em; 
-    }
+    } 
 
     .page-container .right-side-container .input-container select {
-        width: 250px; 
-        height: 45px; 
-        font-size: 1.1em; 
-    }
-
-    .page-container .right-side-container .input-container .left-select {
-        width: 35px; 
-        height: 35px; 
-    }
-
-    .page-container .right-side-container .input-container .right-select {
-        width: 35px; 
-        height: 35px; 
-    }
-
-    .page-container .right-side-container .input-container .main-button {
-        width: 225px; 
-        height: 50px; 
-        border-radius: 30px; 
-        font-size: 1.25em; 
-    }
-
-    #red-error {
-        font-size: 1.5em; 
+        width: 175px; 
     }
 }
 
-@media only screen and (min-width: 2201px) and (max-width: 2600px) {
-    .page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
+
+@media only screen and (min-width: 2000px) {
+    .page-container .left-side-container .left-side-box {
+        width: 120px; 
+        border-radius: 60px; 
+    } 
+
+    .page-container .left-side-container .left-side-box .other-button #globe {
+        width: 80px; 
     }
 
-    .page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
+    .page-container .left-side-container .left-side-box .other-button #python {
+        width: 130px; 
+    } 
 
-    .page-container {
-        display: unset; 
-    }
+    .page-container .left-side-container .left-side-box .other-button #csharp-java {
+        width: 65px; 
+    } 
 
-    .page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .page-container .left-side-container .left-side-box .compare-button {
-        font-size: 1.95em; 
-    }
+    .page-container .left-side-container .left-side-box .other-button #javascript {
+        width: 70px; 
+    } 
 
     .page-container .left-side-container .left-side-box .other-button {
-        font-size: 1.95em; 
-    }
-
-    .page-container .right-side-container .input-container select {
-        width: 275px; 
-        height: 50px; 
-        font-size: 1.45em; 
-    }
-
-    .page-container .right-side-container .input-container .left-select {
-        width: 35px; 
-        height: 35px; 
-    }
-
-    .page-container .right-side-container .input-container .right-select {
-        width: 35px; 
-        height: 35px; 
-    }
-
-    .page-container .right-side-container .input-container .main-button {
-        width: 325px; 
-        height: 60px; 
-        border-radius: 30px; 
-        font-size: 1.5em; 
-    }
-
-    #red-error {
-        font-size: 1.5em; 
-    }
-}
-
-@media only screen and (min-width: 2601px) and (max-width: 3200px) {
-    .page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .page-container {
-        display: unset; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .page-container .left-side-container .left-side-box .compare-button {
-        font-size: 2.5em; 
-        height: 90px; 
-        border-radius: 65px; 
-    }
-
-    .page-container .left-side-container .left-side-box .other-button {
-        font-size: 2.5em; 
-        height: 90px;
-        border-radius: 65px; 
-    }
-
-    .page-container .right-side-container .input-container select {
-        width: 350px; 
-        height: 65px; 
-        font-size: 1.95em; 
-    }
-
-    .page-container .right-side-container .input-container .left-select {
-        width: 35px; 
-        height: 35px; 
-    }
-
-    .page-container .right-side-container .input-container .right-select {
-        width: 35px; 
-        height: 35px; 
-    }
-
-    .page-container .right-side-container .input-container .main-button {
-        width: 400px; 
-        height: 80px; 
-        border-radius: 75px; 
-        font-size: 2em; 
-        margin-top: 50px; 
-    }
-
-    #red-error {
-        font-size: 1.5em; 
-    }
-}
-
-@media only screen and (min-width: 3201px) and (max-width: 4000px) {
-    .page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .page-container {
-        display: unset; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .page-container .left-side-container .left-side-box .compare-button {
-        font-size: 3em; 
+        width: 100px; 
         height: 100px; 
-        border-radius: 65px; 
     }
-
-    .page-container .left-side-container .left-side-box .other-button {
-        font-size: 3em; 
-        height: 100px;
-        border-radius: 65px; 
-    }
-
-    .page-container .right-side-container .input-container select {
-        width: 400px; 
-        height: 75px; 
-        font-size: 2.5em; 
-    }
-
-    .page-container .right-side-container .input-container .left-select {
-        width: 50px; 
-        height: 50px; 
-    }
-
-    .page-container .right-side-container .input-container .right-select {
-        width: 50px; 
-        height: 50px; 
-    }
-
-    .page-container .right-side-container .input-container .main-button {
-        width: 500px; 
-        height: 100px; 
-        border-radius: 75px; 
-        font-size: 2.5em; 
-        margin-top: 50px; 
-    }
-
-    #red-error {
-        font-size: 1.5em; 
-    }
-}
-
-@media only screen and (min-width: 4001px) {
-    .page-container .left-side-container {
-        width: 20%; 
-        height: 100%; 
-        position: fixed; 
-        margin: 0px; 
-    }
-
-    .page-container .right-side-container {
-        width: 80%; 
-        margin-left: 20%; 
-    }
-
-    .page-container {
-        display: unset; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .line-div {
-        width: 55%; 
-    }
-
-    .page-container .right-side-container .graph-container .line-graph-donut-container .donut-div {
-        width: 30%; 
-    }
-    
-    .page-container .right-side-container .graph-container .bar-graph-pie-container {
-        flex-direction: row; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .pie-div {
-        width: 30%; 
-    }
-
-    .page-container .right-side-container .graph-container .bar-graph-pie-container .bar-div {
-        width: 55%; 
-    }
-
-    .page-container .left-side-container .left-side-box .compare-button {
-        font-size: 3.5em; 
-        height: 125px; 
-        border-radius: 100px; 
-    }
-
-    .page-container .left-side-container .left-side-box .other-button {
-        font-size: 3em; 
-        height: 100px;
-        border-radius: 65px; 
-    }
-
-    .page-container .right-side-container .input-container select {
-        width: 600px; 
-        height: 100px; 
-        font-size: 2.75em; 
-    }
-
-    .page-container .right-side-container .input-container .left-select {
-        width: 75px; 
-        height: 75px; 
-    }
-
-    .page-container .right-side-container .input-container .right-select {
-        width: 75px; 
-        height: 75px; 
-    }
-
-    .page-container .right-side-container .input-container .main-button {
-        width: 500px; 
-        height: 100px; 
-        border-radius: 75px; 
-        font-size: 2.5em; 
-        margin-top: 50px; 
-    }
-
-    #red-error {
-        font-size: 1.5em; 
-    }
-}
+} 

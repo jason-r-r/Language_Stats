@@ -1,0 +1,80 @@
+body {
+  margin: 0px;
+  background-color: #fafafa;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 16px;
+}
+
+.center, .lan-page-container .right-side-container .graph-div, .lan-page-container .right-side-container, .lan-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lan-page-container {
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+}
+.lan-page-container .right-side-container {
+  width: 80%;
+  height: auto;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.lan-page-container .right-side-container h1 {
+  width: 90%;
+  margin: 15px 0px;
+  text-align: left;
+  font-size: 3em;
+  color: #232323;
+}
+.lan-page-container .right-side-container .top-p-thing {
+  width: 80%;
+  margin: 25px 0px;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #232323;
+}
+.lan-page-container .right-side-container .graph-div {
+  width: 90%;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.lan-page-container .right-side-container .graph-div p {
+  width: 80%;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #232323;
+}
+.lan-page-container .right-side-container .graph-div .line-stuff {
+  width: 80%;
+  height: auto;
+  padding: 15px;
+  background-color: white;
+  border-radius: 30px;
+  margin: 30px 0px;
+}
+
+@media only screen and (min-width: 250px) and (max-width: 1024px) {
+  .lan-page-container .right-side-container h1 {
+    margin: 35px 0px;
+  }
+
+  .lan-page-container .right-side-container .top-p-thing {
+    width: 90%;
+  }
+
+  .lan-page-container .right-side-container .graph-div .line-stuff {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .lan-page-container .right-side-container .graph-div p {
+    width: 90%;
+  }
+}

@@ -1,26 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Line, Bar, Doughnut, Pie } from 'react-chartjs-2'
-import CsharpPage from './CsharpPage.js';
+import { Line, Bar, Doughnut, Pie } from 'react-chartjs-2'; 
 import { pythonPay, pythonPop, pythonPayA, pythonPopA, 
          javaPay, javaPop, javaPayA, javaPopA, 
          csharpPay, csharpPop, csharpPayA, csharpPopA, 
-         javascriptPay, javascriptPop, javascriptPayA, javascriptPopA } from "./Data.js"
-import JavaPage from './JavaPage.js';
-import JavascriptPage from './JavascriptPage.js';
-import PythonPage from './PythonPage.js';
+         javascriptPay, javascriptPop, javascriptPayA, javascriptPopA } from "./Data.js"; 
 import '../Main.scss'; 
 import gsap from 'gsap'; 
+import Language from './Language.js';
 
-function MainPage() {
+function MainPage() { 
 
-
-    //what i need to do is make a temporary usestate that gets the user first and second 
-    //language on the onChange function. Then on the onSubmit function that's where you 
-    //input all the data into the tables and graphs.
-    
     //useRef 
-    const anim1 = useRef(null); 
+    const leftNav = useRef(null); 
+    const rightSide = useRef(null); 
 
+    const one = useRef(null); 
+    const two = useRef(null); 
+    const three = useRef(null); 
+    const four = useRef(null); 
+    const five = useRef(null); 
     //usestate 
     const [errorOpacity, setErrorOpacity] = useState(0); 
 
@@ -30,26 +28,35 @@ function MainPage() {
     const [firstlanguage, setFirstlanguage] = useState(""); 
     const [secondlanguage, setSecondlanguage] = useState(""); 
 
-        //python state 
-    const [PythonPay, setPythonPay] = useState([]); 
-    const [PythonPopularity, setPythonPopularity] = useState([]); 
-
-        //java state 
-    const [JavaPay, setJavaPay] = useState([]); 
-    const [JavaPopularity, setJavaPopularity] = useState([]); 
-
-
-        //c# state 
-    const [CsharpPay, setCsharpPay] = useState([]); 
-    const [CsharpPopularity, setCsharpPopularity] = useState([]); 
-
-        //javascript state 
-    const [JavascriptPay, setJavascriptPay] = useState([]); 
-    const [JavascriptPopularity, setJavascriptPopularity] = useState([]); 
-
-
         //page state 
     const [pageState, setPageState] = useState("compare"); 
+    const [payPopularityState, setPayPopularityState] = useState("Pay"); 
+
+    //window size 
+    const size = useWindowSize();
+    
+    function useWindowSize() {
+        const [windowSize, setWindowSize] = useState({
+            width: undefined, 
+            height: undefined, 
+        }); 
+
+        useEffect(() => {
+            function handleResize() {
+                setWindowSize({
+                    width: window.innerWidth, 
+                    height: window.innerHeight, 
+                }); 
+            } 
+
+            window.addEventListener("resize", handleResize); 
+            handleResize(); 
+
+            return () => window.removeEventListener("resize", handleResize); 
+        }, []); 
+
+        return windowSize; 
+    }
 
     const handleSubmit = e => {
         e.preventDefault(); 
@@ -62,130 +69,50 @@ function MainPage() {
         //first case 
         if (tempfirstlan === "Python") {
             //final language state 
-            setFirstlanguage(tempfirstlan);
-            //set data 
-            setPythonPay(pythonPay);
-            setPythonPopularity(pythonPop);  
-            setJavaPay([]); 
-            setJavaPopularity([]); 
-            setCsharpPay([]); 
-            setCsharpPopularity([]); 
-            setJavascriptPay([]); 
-            setJavascriptPopularity([]); 
-
+            setFirstlanguage(tempfirstlan); 
             setErrorOpacity(0); 
         }
     
         if (tempfirstlan === "Java") {
             //final language state 
             setFirstlanguage(tempfirstlan); 
-            //set data
-            setJavaPay(javaPay); 
-            setJavaPopularity(javaPop); 
-            setPythonPay([]);
-            setPythonPopularity([]);  
-            setCsharpPay([]); 
-            setCsharpPopularity([]);
-            setJavascriptPay([]); 
-            setJavascriptPopularity([]); 
-
             setErrorOpacity(0); 
         }
 
         if (tempfirstlan === "C#") {
             //final language state 
-            setFirstlanguage(tempfirstlan);
-            //set data  
-            setCsharpPay(csharpPay); 
-            setCsharpPopularity(csharpPop); 
-            setPythonPay([]);
-            setPythonPopularity([]); 
-            setJavaPay([]); 
-            setJavaPopularity([]); 
-            setJavascriptPay([]); 
-            setJavascriptPopularity([]); 
-
+            setFirstlanguage(tempfirstlan); 
             setErrorOpacity(0); 
         }
 
         if (tempfirstlan === "Javascript") {
             //final language state 
             setFirstlanguage(tempfirstlan); 
-            //set data 
-            setJavascriptPay(javascriptPay); 
-            setJavascriptPopularity(javascriptPop); 
-            setPythonPay([]);
-            setPythonPopularity([]); 
-            setJavaPay([]); 
-            setJavaPopularity([]); 
-            setCsharpPay([]); 
-            setCsharpPopularity([]);
-
             setErrorOpacity(0); 
         }
 
         //second case 
         if (tempsecondlan === "Python") {
             //final language state 
-            setSecondlanguage(tempsecondlan);
-            //set data  
-            setPythonPay(pythonPay);
-            setPythonPopularity(pythonPop);  
-            setJavaPay([]); 
-            setJavaPopularity([]); 
-            setCsharpPay([]); 
-            setCsharpPopularity([]); 
-            setJavascriptPay([]); 
-            setJavascriptPopularity([]); 
-
+            setSecondlanguage(tempsecondlan); 
             setErrorOpacity(0); 
         }
     
         if (tempsecondlan === "Java") {
             //final language state 
             setSecondlanguage(tempsecondlan); 
-            //set data 
-            setJavaPay(javaPay); 
-            setJavaPopularity(javaPop);
-            setPythonPay([]);
-            setPythonPopularity([]);  
-            setCsharpPay([]); 
-            setCsharpPopularity([]);
-            setJavascriptPay([]); 
-            setJavascriptPopularity([]); 
-
             setErrorOpacity(0); 
         }
 
         if (tempsecondlan === "C#") {
             //final language state 
             setSecondlanguage(tempsecondlan); 
-            //set data 
-            setJavaPay(csharpPay); 
-            setJavaPopularity(csharpPop); 
-            setPythonPay([]);
-            setPythonPopularity([]); 
-            setJavaPay([]); 
-            setJavaPopularity([]); 
-            setJavascriptPay([]); 
-            setJavascriptPopularity([]); 
-
             setErrorOpacity(0); 
         }
 
         if (tempsecondlan === "Javascript") {
             //final language state 
             setSecondlanguage(tempsecondlan); 
-            //set data 
-            setJavascriptPay(javascriptPay); 
-            setJavascriptPopularity(javascriptPop); 
-            setPythonPay([]);
-            setPythonPopularity([]); 
-            setJavaPay([]); 
-            setJavaPopularity([]); 
-            setCsharpPay([]); 
-            setCsharpPopularity([]);
-
             setErrorOpacity(0); 
         }
     }
@@ -193,14 +120,12 @@ function MainPage() {
     //handle first language 
     const firstLanChange = e => {
         e.preventDefault(); 
-        console.log(e.target.value); 
         setTempFirstLan(e.target.value); 
     }
 
     //handle second language 
     const secondLanChange = e => {
         e.preventDefault(); 
-        console.log(e.target.value); 
         setTempSecondLan(e.target.value); 
     }
 
@@ -241,7 +166,8 @@ function MainPage() {
             yAxes: [
                 {
                     //ticks: { min: 60000, max: 130000, stepSize: 17500}
-                    ticks: { min: 60000, max: 130000, stepSize: 40000 }
+                    // ticks: { min: 60000, max: 130000, stepSize: 40000 }
+                    ticks: { min: 60000, max: 130000, stepSize: 38000}
                 }
             ]
         }
@@ -318,7 +244,7 @@ function MainPage() {
     const Doptions = {
         title: {
           display: true,
-          text: 'Bar Chart'
+          text: 'Pay'
         },
       }
 
@@ -351,16 +277,42 @@ function MainPage() {
     const Coptions = {
         title: {
           display: true,
-          text: 'Pay'
+          text: 'Popularity'
         },
       }
 
       //useEffect 
-      useEffect(() => {
-          gsap.fromTo(anim1.current, { background: "rgb(240,240,240)" }, { background: "linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%" })
-      }, [])
+      useEffect(() => { 
+            if (size.width <= 1024) {
+                console.log("less than"); 
+                gsap.fromTo(rightSide.current, { opacity: 0 }, { opacity: 1, delay: 3, duration: 1.5 }); 
+                gsap.fromTo(leftNav.current, { marginBottom: '100px' }, { margin: '0px', delay: 'none', duration: 0.5 }); 
+
+                gsap.fromTo(one.current, { opacity: 0, marginBottom: '100px' }, { opacity: 1, marginBottom: '0px', delay: 1.25, duration: 0.25 }); 
+                gsap.fromTo(two.current, { opacity: 0, marginBottom: '100px' }, { opacity: 1, marginBottom: '0px', delay: 1.40, duration: 0.25 }); 
+                gsap.fromTo(three.current, { opacity: 0, marginBottom: '100px' }, { opacity: 1, marginBottom: '0px', delay: 1.55, duration: 0.25 }); 
+                gsap.fromTo(four.current, { opacity: 0, marginBottom: '100px' }, { opacity: 1, marginBottom: '0px', delay: 1.70, duration: 0.25 }); 
+                gsap.fromTo(five.current, { opacity: 0, marginBottom: '100px' }, { opacity: 1, marginBottom: '0px', delay: 1.85, duration: 0.25 }); 
+            } 
+
+            else if (size.width > 1024) { 
+                console.log("more than"); 
+                gsap.fromTo(rightSide.current, { opacity: 0 }, { opacity: 1, delay: 3, duration: 1.5 }); 
+                gsap.fromTo(leftNav.current, { marginRight: '100px' }, { margin: '0px', delay: 'none', duration: 0.5 }); 
+
+                gsap.fromTo(one.current, { opacity: 0, marginRight: '100px' }, { opacity: 1, marginRight: '0px', delay: 1.25, duration: 0.25 }); 
+                gsap.fromTo(two.current, { opacity: 0, marginRight: '100px' }, { opacity: 1, marginRight: '0px', delay: 1.40, duration: 0.25 }); 
+                gsap.fromTo(three.current, { opacity: 0, marginRight: '100px' }, { opacity: 1, marginRight: '0px', delay: 1.55, duration: 0.25 }); 
+                gsap.fromTo(four.current, { opacity: 0, marginRight: '100px' }, { opacity: 1, marginRight: '0px', delay: 1.70, duration: 0.25 }); 
+                gsap.fromTo(five.current, { opacity: 0, marginRight: '100px' }, { opacity: 1, marginRight: '0px', delay: 1.85, duration: 0.25 }); 
+            }
+      }, [size.width])
 
     //functions 
+      const handlePageStateCompare = () => {
+          setPageState("compare"); 
+      }
+
     const handlePageStatePython = () => {
         setPageState("python"); 
     }
@@ -375,94 +327,137 @@ function MainPage() {
 
     const handlePageStateJavascript = () => {
         setPageState("javascript"); 
-    }
+    } 
 
-    if (pageState === "python") {
-        return <PythonPage/>
-    }
+    const handlePayClick = () => {
+        setPayPopularityState("Pay"); 
+    } 
+    
+    const handlePopularityClick = () => {
+        setPayPopularityState("Popularity"); 
+    } 
 
-    else if (pageState === "java") {
-        return <JavaPage/>
-    }
-
-    else if (pageState === "c#") {
-        return <CsharpPage/>
-    }
-
-    else if (pageState === "javascript") {
-        return <JavascriptPage/>
-    }
+    const datasetKeyProvider=()=>{ 
+        return btoa(Math.random()).substring(0,12)
+    } 
 
     return (
         <div className="page-container">
 
             <div className="left-side-container">
-                <div className="img-container">
-                    <img alt="" src="https://dewey.tailorbrands.com/production/brand_version_mockup_image/445/4923940445_398d42e5-d903-4e8e-ba08-df943c0765d8.png?cb=1616534087"/>
-                </div>
-                <div className="left-side-box">
-                    <div className="compare-button" style={{backgroundColor: "white"}} ref={anim1}>Compare</div>
-                    <div className="other-button" style={{backgroundColor: "rgb(240, 240, 240)"}} onClick={handlePageStatePython}>Python</div>
-                    <div className="other-button" style={{backgroundColor: "rgb(240, 240, 240)"}} onClick={handlePageStateC}>C#</div>
-                    <div className="other-button" style={{backgroundColor: "rgb(240, 240, 240)"}} onClick={handlePageStateJava}>Java</div>
-                    <div className="other-button" style={{backgroundColor: "rgb(240, 240, 240)"}} onClick={handlePageStateJavascript}>Javascript</div>
-                </div>
-            </div>
-
-            <div className="right-side-container">
-
-                <form className="input-container" onSubmit={handleSubmit}>
-
-                    <div className="input-stuff-container">
-                        <div className="left-select"></div>
-                        <select onChange={firstLanChange} >
-                            <optgroup>
-                                <option defaultValue>Choose</option>
-                                <option value="Java">Java</option>
-                                <option value="Python">Python</option>
-                                <option value="C#">C#</option>
-                                <option value="Javascript">Javascript</option>
-                            </optgroup>
-                        </select>
-
-                        <select onChange={secondLanChange}>
-                            <optgroup>
-                                <option defaultValue>Choose</option>
-                                <option value="Java">Java</option>
-                                <option value="Python">Python</option>
-                                <option value="C#">C#</option>
-                                <option value="Javascript">Javascript</option>
-                            </optgroup>
-                        </select>
-                        <div className="right-select"></div>
-                    </div>
-
-                    <button className="main-button">Go</button>
-
-                </form>
-
-                <div id="red-error" style={{opacity: errorOpacity, color: "red"}}>You cannot input the same language</div>
+                <div className="left-side-box" ref={leftNav}>
                 
-                <div className="graph-container">
-                    <div className="line-graph-donut-container">
-                        <div className="line-div">
-                            <Line data={Ldata} options={Loptions}/>
-                        </div>
-                        <div className="donut-div">
-                            <Doughnut data={Ddata} options={Doptions} />
-                        </div>
+                    <div ref={one} className="other-button" onClick={handlePageStateCompare} style={{backgroundColor: pageState === "compare" ? "rgb(113, 21, 188)" : '', opacity: 0}}>
+                        <img  alt="" id="globe" src={process.env.PUBLIC_URL + "/globe.png"} /> 
+                    </div>
+                    
+                    <div ref={two} className="other-button" onClick={handlePageStatePython} style={{backgroundColor: pageState === "python" ? "rgb(113, 21, 188)" : '', opacity: 0}}>
+                        <img alt="" id="python" src={process.env.PUBLIC_URL + "/python.png"} /> 
+                    </div>
+                    
+                    <div ref={three} className="other-button" onClick={handlePageStateC} style={{backgroundColor: pageState === "c#" ? "rgb(113, 21, 188)" : '', opacity: 0}}>
+                        <img className="invert-filter" id="csharp-java" alt=""src={process.env.PUBLIC_URL + "/c-sharp1.png"} /> 
+                    </div> 
+
+                    <div ref={four} className="other-button" onClick={handlePageStateJava} style={{backgroundColor: pageState === "java" ? "rgb(113, 21, 188)" : '', opacity: 0}}>
+                        <img alt="" id="csharp-java" src={process.env.PUBLIC_URL + "/java.png"} /> 
                     </div>
 
-                    <div className="bar-graph-pie-container">
-                        <div className="pie-div">
-                            <Pie data={Cdata} options={Coptions} />
-                        </div>
-                        <div className="bar-div">
-                            <Bar data={Bdata} options={Boptions}/> 
-                        </div>
+                    <div ref={five} className="other-button" onClick={handlePageStateJavascript} style={{backgroundColor: pageState === "javascript" ? "rgb(113, 21, 188)" : '', opacity: 0}}>
+                        <img className="invert-filter" id="javascript" alt="" src={process.env.PUBLIC_URL + "/javascript.png"} /> 
                     </div>
+
                 </div>
             </div>
+
+            {
+                pageState !== "compare" ? 
+
+                    <Language language={pageState} /> 
+
+                : 
+
+                    <div className="right-side-container" ref={rightSide}>
+
+                        <form className="input-container" onSubmit={handleSubmit}>
+
+                            <div className="input-stuff-container">
+
+                                <div className="color-select-container" style={{display: 'flex', alignItems: 'center'}}>
+                                    <div className="left-select"></div>
+                                    <select onChange={firstLanChange} >
+                                        <optgroup>
+                                            <option defaultValue>Choose</option>
+                                            <option value="Java">Java</option>
+                                            <option value="Python">Python</option>
+                                            <option value="C#">C#</option>
+                                            <option value="Javascript">Javascript</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+
+                                <div style={{display: 'flex', alignItems: 'center'}}>
+                                    <select onChange={secondLanChange}>
+                                        <optgroup>
+                                            <option defaultValue>Choose</option>
+                                            <option value="Java">Java</option>
+                                            <option value="Python">Python</option>
+                                            <option value="C#">C#</option>
+                                            <option value="Javascript">Javascript</option>
+                                        </optgroup>
+                                    </select>
+                                    <div className="right-select"></div>
+                                </div>
+                            </div>
+
+                            <button className="main-button">Go</button>
+
+                        </form>
+
+                        <div id="red-error" style={{opacity: errorOpacity, color: "red"}}>You cannot input the same language</div> 
+
+                        <div className="pay-popularity-click-container">
+                            <div className="content">
+                                <div id="right-border" onClick={handlePayClick}
+                                    style={{backgroundColor: payPopularityState === "Pay" ? "rgb(144, 19, 247)" : "white", 
+                                            color: payPopularityState === "Pay" ? "white" : "rgb(144, 19, 247)"}}>
+                                    Pay
+                                </div> 
+                                <div id="left-border" onClick={handlePopularityClick}
+                                    style={{backgroundColor: payPopularityState !== "Pay" ? "rgb(144, 19, 247)" : "white", 
+                                            color: payPopularityState !== "Pay" ? "white" : "rgb(144, 19, 247"}}>
+                                    Popularity
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div className="graph-container">
+                            {
+                                payPopularityState === "Pay" ? 
+
+                                <div className="pay-graph-container">
+                                    <div className="donut-div">
+                                        <Doughnut data={Ddata} options={Doptions} datasetKeyProvider={datasetKeyProvider} />
+                                    </div>
+                                    <div className="line-div">
+                                        <Line data={Ldata} options={Loptions} datasetKeyProvider={datasetKeyProvider} />
+                                    </div>
+                                </div> 
+
+                                : 
+
+                                <div className="popularity-graph-container">
+                                    <div className="bar-div">
+                                        <Bar data={Bdata} options={Boptions} datasetKeyProvider={datasetKeyProvider} /> 
+                                    </div> 
+                                    <div className="pie-div">
+                                        <Pie data={Cdata} options={Coptions} datasetKeyProvider={datasetKeyProvider} />
+                                    </div> 
+                                </div>
+                            } 
+                        </div>
+                </div>
+            }
 
         </div>
     )
